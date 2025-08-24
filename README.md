@@ -9,5 +9,5 @@ This repo contains projects which showcases understanding and utilization of web
 ## Apps 
 List of Web Applications Built with React 
  ### MindStore 
- - Click here to open the app: [mind-store.netlify.app](https://mind-store.netlify.app/)
+ - Launch the app: [mind-store.netlify.app](https://mind-store.netlify.app/)
 - A Modern Note-taking App that enables you capture ideas, thoughts, and inspiration the moment they strike! <br>
