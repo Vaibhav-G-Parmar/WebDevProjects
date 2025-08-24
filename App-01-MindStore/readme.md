@@ -1,5 +1,6 @@
 # MindStore
-Never lose a great thought—save it with MindStore.
+Never lose a great thought—save it with MindStore. <br><br>
+Launch the app: [mind-store.netlify.app](https://mind-store.netlify.app/)
 
 ## About
 
