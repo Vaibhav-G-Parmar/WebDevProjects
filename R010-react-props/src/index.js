@@ -19,6 +19,9 @@ function Card(props){
 ReactDOM.render(
   <div>
     <h1>My Contacts</h1>
+
+    <Avatar img="https://img.freepik.com/premium-photo/illustration-single-man-american-cartoon-art-style-images-with-ai-generated_545052-3010.jpg"/>
+
     <Card name="Hari" 
           image="https://www.pelago.com/img/countries/new-zealand/0811-1600_newzealand.jpg" 
           alt="avatar_img" 
