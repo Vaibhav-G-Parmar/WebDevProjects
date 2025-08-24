@@ -1,7 +1,6 @@
 //Author: Vaibhav Parmar
 
 import React from 'react'
-import notes from '../notes';
 
 const Note = (props) => {
   return (
