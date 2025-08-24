@@ -1,10 +1,13 @@
-import React from 'react'
+//Author: Vaibhav Parmar
 
-const Note = () => {
+import React from 'react'
+import notes from '../notes';
+
+const Note = (props) => {
   return (
     <div className='note'>
-      <h1>Title of the Note</h1>
-      <p>Contents of the Note</p>
+      <h1>{props.title}</h1>
+      <p>{props.content}</p>
     </div>
   )
 }
