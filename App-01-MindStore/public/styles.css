@@ -6,57 +6,49 @@ Margin creates space between elements. */
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   overflow-x: hidden;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
-  background: #eee;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #a1c4fd 100%);
+  padding-top: 20px; 
+  padding-bottom: 50px; 
+  -webkit-font-smoothing: antialiased;
+  box-shadow: 0 2px 16px rgba(224, 122, 95, 0.08);
 }
 
-header {
-  display: flex;
-  background-color: #E07A5F;
-  padding: 16px 32px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+.copyRight {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #000000;
+  padding-right: 30px;
 }
 
-/* App logo left alignment */
+ /* App logo left alignment */
 .appLogo {
   float: left;
-  margin-top: 15px;
-  margin-left: 10px;
+  margin-top: 15.5px;
+  margin-left: 20px;
   height: 45px;
 }
 
 .appTitle {
   color: #000000;
-  font-family: "Roboto Mono", monospace;
   font-weight: 700;
   font-size: 2em;
   margin-top: 10px;
-  padding-left: 15px;
+  padding-left: 13px;
+  margin-bottom: 0px;
 }
 
 .appSlogan {
   color: #000000;
-  font-family: "Neuton", serif;
   font-weight: 400;
-  font-size: 1em;
+  font-size: 0.75em;
+  margin-top: 0px;
   margin-bottom: 3px;
-  margin-left: 70px;
-}
-
-footer {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-}
-
-footer p {
-  color: #ccc;
+  margin-left: 80px;
 }
 
 .notesContainer {
@@ -75,21 +67,55 @@ footer p {
   /* max-height: 200px; */
 }
 
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+  gap: 17px;
+  padding: 20px;
+}
+
+.note {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
 .note h1 {
   color: #000000;
-  font-family: "Roboto Mono", monospace;
   font-size: 1.2em;
   margin-bottom: 6px;
 }
 
 .note p {
   color: #000000;
-  font-family: "Neuton", serif;
-  font-size: 1.3em;
+  font-size: 0.75em;
   word-wrap: break-word;
-  /* overflow: hidden; */
-  /* text-overflow: ellipsis;
-  display: -webkit-box; */
-  /* -webkit-line-clamp: 5; /* Adjust for desired number of lines 
-  -webkit-box-orient: vertical; */
+}
+
+.create-note {
+  background: #DCE0D9;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.container .btn {
+  background: #eac799;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-weight: bold;
+}
+
+.container .btn:hover {
+    background: #f1d1a7;  /* Darker shade of your current button color */
+    color: #000000;  /* Black text on hover */
+    border-color: #f1d1a7;
+}container .btn {
+    color: #000000;  /* Black text on hover */
+    border-color: #f1d1a7;
 }

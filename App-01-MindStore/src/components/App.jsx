@@ -2,25 +2,38 @@
 
 import React from "react";
 import Header from "./Header";
-import Footer from "./Footer";
 import Note from "./Note";
-import notes from "../notes";
+import notesArray from "../notes";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateNote from "./CreateNote";
 
 function App() {
+
+  const [notes, setNotes] = React.useState(notesArray);
+
+  function addNote(newNote) {
+      setNotes(prevNotes => [
+          ...prevNotes,
+          { ...newNote, id: prevNotes.length + 1 }
+      ]);
+  }
+
   return (
     <div>
       <Header/>
+      <CreateNote onAdd={addNote}/>
       {/* Map through notes array and render Note components */}
-      <div className="notesContainer">
-        {notes.map(noteRecord => (
-          <Note 
-            key={noteRecord.id}
-            title={noteRecord.title}
-            content={noteRecord.content}
-          />
-        ))}
+      <div className="container">
+        <div className="notes-grid">
+            {notes.map(noteRecord => (
+                <Note 
+                    key={noteRecord.id}
+                    title={noteRecord.title}
+                    content={noteRecord.content}
+                />
+            ))}
+        </div>
       </div>
-      <Footer/>
     </div>
   );
 }
