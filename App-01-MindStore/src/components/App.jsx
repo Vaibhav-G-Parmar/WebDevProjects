@@ -11,13 +11,15 @@ function App() {
     <div>
       <Header/>
       {/* Map through notes array and render Note components */}
-      {notes.map(noteRecord => (
-        <Note 
-          key={noteRecord.id}
-          title={noteRecord.title}
-          content={noteRecord.content}
-        />
-      ))}
+      <div className="notesContainer">
+        {notes.map(noteRecord => (
+          <Note 
+            key={noteRecord.id}
+            title={noteRecord.title}
+            content={noteRecord.content}
+          />
+        ))}
+      </div>
       <Footer/>
     </div>
   );
