@@ -119,3 +119,26 @@ body {
     color: #000000;  /* Black text on hover */
     border-color: #f1d1a7;
 }
+
+.auto-expand {
+  min-height: 80px;
+  max-height: 300px;
+  resize: none;
+  overflow-y: auto;
+  transition: height 0.1s ease;
+}
+
+.btn {
+  background-color: #f5ba13;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+  
+.btn:hover {
+    background-color: #f0b10e;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+}

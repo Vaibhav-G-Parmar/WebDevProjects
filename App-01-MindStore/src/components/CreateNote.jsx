@@ -38,17 +38,27 @@ return (
                     placeholder="Title"
                     value={note.title}
                     onChange={handleChange}
+                    onFocus={(e) => e.target.classList.add('active-field')}
+                    onBlur={(e) => e.target.classList.remove('active-field')}
                 />
             </div>
             <div className="mb-3">
                 <textarea
                     type="textarea"
-                    className="form-control input-effect"
+                    className="form-control input-effect auto-expand"
                     name="content"
                     placeholder="Take a note..."
                     rows="3"
                     value={note.content}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                        handleChange(e);
+                        // Auto-resize logic
+                        const textarea = e.target;
+                        textarea.style.height = 'auto';
+                        textarea.style.height = Math.min(textarea.scrollHeight, 300) + 'px';
+                    }}
+                    onFocus={(e) => e.target.classList.add('active-field')}
+                    onBlur={(e) => e.target.classList.remove('active-field')}
                 />
             </div>
             <button 
@@ -64,34 +74,26 @@ return (
                 font-family: "Roboto Mono", monospace;
             }
             
-            .input-effect {
-                transition: all 0.3s ease;
-                border: 1px solid #ccc;
-            }
-            
             .input-effect:focus {
-                border-color: #4285f4;
-                box-shadow: 0 0 8px rgba(66, 133, 244, 0.6);
-                outline: none;
-            }
-            
-            .input-effect:hover {
-                border-color: #aaa;
-            }
-            
-            .btn {
-                background-color: #f5ba13;
-                color: white;
-                border: none;
-                border-radius: 7px;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-                transition: all 0.2s ease;
-            }
-            
-            .btn:hover {
-                background-color: #f0b10e;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+                background-color: #f8d7a5ff;
+                box-shadow: 0 2px 5px rgba(213, 194, 194, 0.2);
                 transform: translateY(-1px);
+                outline: none !important;         /* Removes browser default outline */
+                border-color: #f8d7a5ff !important; /* Changes the border color */
+            }
+            
+            .input-effect:hover:not(:focus) {
+                background-color: #f8d7a5ff;
+                box-shadow: 0 2px 5px rgba(213, 194, 194, 0.2);
+                transform: translateY(-1px);
+            }
+            
+            /* Disable hover effect when any field is active */
+            .active-field ~ form .input-effect:hover:not(:focus),
+            form:has(.active-field) .input-effect:hover:not(:focus) {
+                background-color: #ffffff;
+                box-shadow: none;
+                transform: none;
             }
             `}
         </style>
