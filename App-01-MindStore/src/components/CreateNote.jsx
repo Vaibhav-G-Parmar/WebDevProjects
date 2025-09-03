@@ -1,104 +1,94 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import Field from './Field';
 
 const CreateNote = ({ onAdd }) => {
     const [note, setNote] = useState({
         title: "",
         content: ""
     });
+    // Track validation errors for each field
+    const [errors, setErrors] = useState({
+        title: "",
+        content: ""
+    });
+    // Track whether each field has been touched (interacted with)
+    const [touched, setTouched] = useState({
+        title: false,
+        content: false
+    });
 
-  function handleChange(event) {
-        const { name, value } = event.target;
-        setNote(prevNote => ({
-            ...prevNote,
-            [name]: value
-        }));
+    // Validate individual form fields
+    const validateField = (name, value) => {
+        if (!value.trim()) {
+            return `${name.charAt(0).toUpperCase() + name.slice(1)} is required`;
+        }
+        return "";
     }
-    // Only add note if both title and content are present
-    const isNoteValid = note.title.trim() !== "" && note.content.trim() !== "";
-    function submitNote(event) {
+
+    // Handle input changes
+    const handleChange = event => {
+        const { name, value } = event.target;
+        setNote(prevNote => ({ ...prevNote, [name]: value }));
+        setErrors(prev => ({ ...prev, [name]: "" }));
+    }
+
+    // Handle input blur (when the field loses focus after clicked once)
+    const handleBlur = event => {
+        const { name, value } = event.target;
+        setTouched(prev => ({ ...prev, [name]: true }));
+        setErrors(prev => ({ ...prev, [name]: validateField(name, value) }));
+    }
+
+    // Handle Add Note form submission
+    const submitNote = event => {
         event.preventDefault();
-        if (!isNoteValid) {
+        const titleError = validateField('title', note.title);
+        const contentError = validateField('content', note.content);
+        if (titleError || contentError) {
+            setErrors({ title: titleError, content: contentError });
+            setTouched({ title: true, content: true });
             return;
         }
         onAdd(note);
-        setNote({
-            title: "",
-            content: ""
-        });
+        setNote({ title: '', content: '' });
+        setErrors({ title: '', content: '' });
+        setTouched({ title: false, content: false });
     }
 
-return (
-    <div className="container mt-4">
-        <form className="create-note">
-            <div className="mb-3">
-                <input
+    // Render the form
+    return (
+        <div className="container mt-4">
+            <form className="create-note">
+                <Field
                     type="text"
-                    className="form-control input-effect"
                     name="title"
                     placeholder="Title"
                     value={note.title}
+                    error={errors.title}
+                    touched={touched.title}
                     onChange={handleChange}
-                    onFocus={(e) => e.target.classList.add('active-field')}
-                    onBlur={(e) => e.target.classList.remove('active-field')}
+                    onBlur={handleBlur}
                 />
-            </div>
-            <div className="mb-3">
-                <textarea
+                <Field
                     type="textarea"
-                    className="form-control input-effect auto-expand"
                     name="content"
                     placeholder="Take a note..."
-                    rows="3"
                     value={note.content}
-                    onChange={(e) => {
-                        handleChange(e);
-                        // Auto-resize logic
-                        const textarea = e.target;
-                        textarea.style.height = 'auto';
-                        textarea.style.height = Math.min(textarea.scrollHeight, 300) + 'px';
-                    }}
-                    onFocus={(e) => e.target.classList.add('active-field')}
-                    onBlur={(e) => e.target.classList.remove('active-field')}
+                    error={errors.content}
+                    touched={touched.content}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                 />
-            </div>
-            <button 
-                className="btn" 
-                onClick={submitNote}
-            >
-                Add Note
-            </button>
-        </form>
-        <style>
-            {`
-            input::placeholder, textarea::placeholder {
-                font-family: "Roboto Mono", monospace;
-            }
-            
-            .input-effect:focus {
-                background-color: #f8d7a5ff;
-                box-shadow: 0 2px 5px rgba(213, 194, 194, 0.2);
-                transform: translateY(-1px);
-                outline: none !important;         /* Removes browser default outline */
-                border-color: #f8d7a5ff !important; /* Changes the border color */
-            }
-            
-            .input-effect:hover:not(:focus) {
-                background-color: #f8d7a5ff;
-                box-shadow: 0 2px 5px rgba(213, 194, 194, 0.2);
-                transform: translateY(-1px);
-            }
-            
-            /* Disable hover effect when any field is active */
-            .active-field ~ form .input-effect:hover:not(:focus),
-            form:has(.active-field) .input-effect:hover:not(:focus) {
-                background-color: #ffffff;
-                box-shadow: none;
-                transform: none;
-            }
-            `}
-        </style>
-    </div>
-)
+                <button
+                    type="submit"
+                    className="btn"
+                    onClick={submitNote}
+                >
+                    Add Note
+                </button>
+            </form>
+        </div>
+    )
 }
 
 export default CreateNote

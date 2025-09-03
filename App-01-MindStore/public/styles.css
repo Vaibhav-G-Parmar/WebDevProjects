@@ -142,3 +142,38 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     transform: translateY(-1px);
 }
+
+
+input::placeholder, textarea::placeholder {
+  font-family: "Roboto Mono", monospace;
+}
+
+.input-effect:focus:not(.is-invalid) {
+  background-color: #f8d7a5ff;
+  box-shadow: 0 2px 5px rgba(213, 194, 194, 0.2);
+  transform: translateY(-1px);
+  outline: none !important;
+  border-color: #f8d7a5ff !important;
+}
+
+.input-effect:hover:not(:focus):not(.is-invalid) {
+  background-color: #f8d7a5ff;
+  box-shadow: 0 2px 5px rgba(213, 194, 194, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Disable hover effect when any input field is active */
+.active-field ~ form .input-effect:hover:not(:focus),
+form:has(.active-field) .input-effect:hover:not(:focus) {
+  background-color: #ffffff;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Remove box-shadow for input fields when error is shown */
+input.is-invalid {
+  box-shadow: none !important;
+}
+textarea.is-invalid {
+  box-shadow: none !important;
+}
