@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Field from './Field';
 
-const CreateNote = ({ onAdd }) => {
+const CreateNote = ({ onAdd, theme }) => {
     const [note, setNote] = useState({
         title: "",
         content: ""
@@ -76,12 +76,21 @@ const CreateNote = ({ onAdd }) => {
                     value={note.content}
                     error={errors.content}
                     touched={touched.content}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                        handleChange(e);
+                        // Auto-resize logic
+                        const textarea = e.target;
+                        textarea.style.height = 'auto';
+                        const scrollHeight = textarea.scrollHeight;
+                        textarea.style.height = `${scrollHeight}px`;
+                    }}
                     onBlur={handleBlur}
+                    style={{ minHeight: '72px' }} // Approximately 3 lines of text
+                    className="auto-resize"
                 />
                 <button
                     type="submit"
-                    className="btn"
+                    className={theme === 'dark' ? 'themeAddBtn' : 'btn'}
                     onClick={submitNote}
                 >
                     Add Note

@@ -1,7 +1,126 @@
-/*Author: Vaibhav Parmar*/
+.theme-dark .appTitle,
+.theme-dark .appSlogan {
+  color: #ffffff;
+}
+
+.themeBtn {
+  background-color: #242fa4;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+  padding: 5px 10px;
+  margin-right: 110px;
+}
+
+.themeAddBtn {
+  background-color: #242fa4;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+  padding: 5px 10px;
+  align-items: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.themeBtn:hover {
+    background-color: #394cf4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+.themeAddBtn:hover {
+    background-color: #394cf4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Theme styles    */
+.theme-light {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #a1c4fd 100%);
+  color: #000;
+}
+
+.theme-dark {
+  background: linear-gradient(135deg, #000000 0%, #38384b 100%);
+  color: #c7d2fe;
+}
+
+.theme-dark body {
+  background: linear-gradient(135deg, #000000 0%, #000000 100%);
+  color: #c7d2fe;
+}
+
+
+.theme-dark .container,
+.theme-dark .notes-grid {
+  zbackground: transparent;
+  color: #c7d2fe;
+}
+
+
+.theme-dark .note {
+  background: #23243a;
+  color: #c7d2fe;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  border: 1px solid #334155;
+}
+
+.theme-dark .note h1 {
+  color: #fbbf24;
+}
+
+.theme-dark .note p {
+  color: #c7d2fe;
+}
+
+
+.theme-dark .create-note {
+  background: #23243a;
+  color: #000000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  border: 1px solid #334155;
+}
+
+
+.theme-dark input,
+.theme-dark textarea {
+  background: #000000;
+  color: #92a6f5;
+  border: 1px solid #334155;
+}
+
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder {
+  color: #64748b;
+}
+
+
+.theme-dark .btn {
+  background: #6366f1;
+  color: #f9fafb;
+  border-color: #6366f1;
+}
+
+.theme-dark .btn:hover {
+  background: #818cf8;
+  color: #f9fafb;
+  border-color: #818cf8;
+}
+
+
+.theme-dark .invalid-feedback {
+  color: #f87171;
+}
+/* Author: Vaibhav Parmar  */
 
 /* Padding increases the size of the element’s background.
-Margin creates space between elements. */
+Margin creates space between elements.    */
 
 * {
   padding: 0;
@@ -10,34 +129,27 @@ Margin creates space between elements. */
   font-family: "Roboto Mono", monospace;
 }
 
-body {
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #a1c4fd 100%);
-  padding-top: 20px; 
-  padding-bottom: 50px; 
-  -webkit-font-smoothing: antialiased;
-  box-shadow: 0 2px 16px rgba(224, 122, 95, 0.08);
-}
-
 .copyRight {
   text-align: right;
   font-size: 0.9rem;
   color: #000000;
   padding-right: 30px;
+  text-align: center;
+  padding-top: 20px;
 }
 
- /* App logo left alignment */
 .appLogo {
   float: left;
-  margin-top: 15.5px;
-  margin-left: 20px;
-  height: 45px;
+  margin-top: 6px;
+  margin-left: 6.5rem;
+  height: 70px;
 }
 
 .appTitle {
   color: #000000;
   font-weight: 700;
   font-size: 2em;
-  margin-top: 10px;
+  margin-top: 14px;
   padding-left: 13px;
   margin-bottom: 0px;
 }
@@ -48,7 +160,7 @@ body {
   font-size: 0.75em;
   margin-top: 0px;
   margin-bottom: 3px;
-  margin-left: 80px;
+  margin-left: 189px;
 }
 
 .notesContainer {
@@ -64,7 +176,7 @@ body {
   width: 300px;
   margin: 12px;
   float: left;
-  /* max-height: 200px; */
+  /* max-height: 200px;   */
 }
 
 .notes-grid {
@@ -112,12 +224,12 @@ body {
 }
 
 .container .btn:hover {
-    background: #f1d1a7;  /* Darker shade of your current button color */
-    color: #000000;  /* Black text on hover */
+    background: #f1d1a7;  /* Darker shade of your current button color   */
+    color: #000000;  /* Black text on hover   */
     border-color: #f1d1a7;
 }container .btn {
-    color: #000000;  /* Black text on hover */
-    border-color: #f1d1a7;
+    color: #000000;  /* Black text on hover   
+    border-color: #f1d1a7;*/
 }
 
 .auto-expand {
@@ -162,18 +274,83 @@ input::placeholder, textarea::placeholder {
   transform: translateY(-1px);
 }
 
-/* Disable hover effect when any input field is active */
-.active-field ~ form .input-effect:hover:not(:focus),
-form:has(.active-field) .input-effect:hover:not(:focus) {
+/* Dark mode input effects   */
+.theme-dark .input-effect:focus:not(.is-invalid) {
+  background-color: #656ab0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  border-color: #000000 !important;
+}
+
+.theme-dark .input-effect:hover:not(:focus):not(.is-invalid) {
+  background-color: #3a3f7d;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Keep dark background for invalid fields  */
+.theme-dark .input-effect.is-invalid,
+.theme-dark .input-effect.is-invalid:hover {
+  background-color: #181824;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Allow hover effects on non-invalid fields when another field is focused   */
+.theme-dark .input-effect:hover:not(.is-invalid):not(:focus) {
+  background-color: #3a3f7d;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Disable hover effect when any input field is active   */
+.active-field ~ form .input-effect:hover:not(:focus):not(.is-invalid),
+form:has(.active-field) .input-effect:hover:not(:focus):not(.is-invalid) {
   background-color: #ffffff;
   box-shadow: none;
   transform: none;
 }
 
-/* Remove box-shadow for input fields when error is shown */
+/* Override for dark theme to maintain dark background in all states   */
+.theme-dark .active-field ~ form .input-effect:hover:not(:focus),
+.theme-dark form:has(.active-field) .input-effect:hover:not(:focus),
+.theme-dark .input-effect:hover,
+.theme-dark .input-effect:focus {
+  background-color: #181824;
+  color: #c7d2fe;
+}
+
+/* Remove box-shadow for input fields when error is shown   */
 input.is-invalid {
   box-shadow: none !important;
 }
 textarea.is-invalid {
   box-shadow: none !important;
 }
+
+.toggleSwitch {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #fee0c5;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.4s;
+  margin-right: 120px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.toggleThumb{
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: left 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-dark .toggleThumb {
+  left: 30px;
+} 
